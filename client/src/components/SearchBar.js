@@ -29,7 +29,7 @@ export const SearchBar = ({faren}) => {
                 alert('Please enter a city')
             )
         } else {
-        const apiData = await fetch(`http://api.weatherbit.io/v2.0/current?city=${city}&key=${key}`)
+        const apiData = await fetch(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${key}`)
         .then(res => res.json())
         .then(data => data)
     
