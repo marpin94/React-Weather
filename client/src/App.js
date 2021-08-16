@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useReducer, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { SearchBar } from './components/SearchBar'
 import {Nav} from './components/Nav'
-import './index.css'
+
 
 
 

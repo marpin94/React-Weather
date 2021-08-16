@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { WeatherImg } from './WeatherImg';
 
@@ -6,7 +6,7 @@ import { WeatherImg } from './WeatherImg';
 
 export const WeatherCards = ({temp, city, description, state, country, faren}) => {
 
-    // const [faren, setFaren] = useState(false)
+
     const [weatherKey, setWeatherKey] = useState('')
     
     var temp_f = Math.round((temp * 9/5) +32);
@@ -39,10 +39,7 @@ export const WeatherCards = ({temp, city, description, state, country, faren}) =
       
    })
 
-    // const handleClick = (e) => {
-    //     e.preventDefault()
-    //     setFaren(!faren)
-    // }
+
 
     return (
         <>
@@ -63,11 +60,8 @@ export const WeatherCards = ({temp, city, description, state, country, faren}) =
                 {description && <p> {description} </p>}
                
             </div>
-
-
-            
+    
         </div>
-        {/* <button type="button" className="btn btn-secondary d-flex align-self-end" onClick={handleClick} > Toggle C/F </button>  */}
         </>
     )
 }

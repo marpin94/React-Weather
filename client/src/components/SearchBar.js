@@ -1,7 +1,7 @@
 // import { Dropdown } from 'bootstrap'
 import React, { useEffect, useState } from 'react'
-import { ThemeProvider } from 'styled-components'
-import { Forecast } from './Forecast'
+
+
 import { WeatherCards } from './WeatherCards'
 
 
@@ -11,7 +11,7 @@ export const SearchBar = ({faren}) => {
     const [searchResults, setSearchResults] = useState([])
     const [load, setLoad] = useState(false)
     const [option, setOption] = useState('Current Weather')
-    const [foreCast, setForecast] = useState([])
+
 
 
 
@@ -23,13 +23,6 @@ export const SearchBar = ({faren}) => {
 
     async function handleSubmit(e){
         e.preventDefault()
-
-        if(option == 'Forecast'){
-
-            return(
-                <Forecast />
-            )
-        }
 
         if(city === '') {
             return(
@@ -45,14 +38,7 @@ export const SearchBar = ({faren}) => {
           console.log(error)
         })
 
-        const foreCastData = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=${key}&days=5`)
-        .then(res => res.json())
-        .then(data => data)
-    
-                
-        .catch(error => {
-          console.log(error)
-        })
+
 
         if (apiData == undefined) {
             setCity('')
@@ -70,16 +56,14 @@ export const SearchBar = ({faren}) => {
                 country: apiData.data[0].country_code               
             })
 
-            setForecast(foreCastData)
+
         }
             setLoad(true)
             setCity('')
         }
     }
 
-    useEffect(() => {
-        console.log(foreCast)
-    }, [load])
+
 
 
     return (
@@ -101,7 +85,7 @@ export const SearchBar = ({faren}) => {
             
             <br/>
 
-            {load && <Forecast data={foreCast} faren={faren}/>}
+
             
         </div>
     </div>
