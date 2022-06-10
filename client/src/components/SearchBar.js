@@ -14,9 +14,7 @@ export const SearchBar = ({faren}) => {
     
     const key = process.env.REACT_APP_API_KEY
 
-    console.log(process.env.REACT_APP_API_KEY)
-
-
+    
     async function handleSubmit(e){
         e.preventDefault()
 
