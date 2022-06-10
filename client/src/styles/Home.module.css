@@ -1,0 +1,16 @@
+
+.farenBtn {
+    margin: 16px;
+    padding: 8px;
+    border-radius: 4px;
+    transition: 1.5s;
+    border: none;
+    background-color:#6c757d;
+    color: white;
+}
+
+.farenBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 2px 16px #007bff;
+}
+

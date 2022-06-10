@@ -1,0 +1,18 @@
+.container{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.searchBtn {
+    padding: 8px;
+    border-radius: 4px;
+    transition: 1.5s;
+    border: none;
+    background-color:#6c757d;
+    color: white;
+}
+
+.searchBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 2px 16px #007bff;
+}

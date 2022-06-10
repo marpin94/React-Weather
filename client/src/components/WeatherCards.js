@@ -2,6 +2,8 @@ import React, { useEffect, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { WeatherImg } from './WeatherImg';
 
+import styles from '../styles/WeatherCard.module.css'
+
 
 
 export const WeatherCards = ({temp, city, description, state, country, faren}) => {
@@ -14,6 +16,7 @@ export const WeatherCards = ({temp, city, description, state, country, faren}) =
 
     let weatherImgObj = {
         clouds: 'CLOUDY',
+        haze: 'CLOUDY',
         clear: 'CLEAR_DAY',
         snow: 'SNOW',
         rain: 'RAIN'
@@ -43,25 +46,18 @@ export const WeatherCards = ({temp, city, description, state, country, faren}) =
 
     return (
         <>
-                <h2 className='text-center'> Current Weather </h2>
-        <br/>
-        <div className=' shadow card text-center text-primary border border-info'>
-
-        <div className = 'card-img d-flex align-self-start mr-3'> {weatherKey && <WeatherImg icon={weatherKey}/>}  </div>
-            
-            <div className='card-img-overlay'>
-                {city && <h2>{city}{country =='US'? `,${state}`:''}</h2>} 
-                  
+            <h2 className='text-center'> Current Weather </h2>
+            <hr/>
+            <div className='shadow card text-center border border-info'>
+            <div className={styles.weatherIcon}> {weatherKey && <WeatherImg icon={weatherKey}/>}  </div> 
+                <div className='card-body'>
+                    {city && <h2 className='card-title'>{city}{country === 'US'? `,${state}`:''}</h2>}    
+                    {country && <h4 className='card-text'>{country}</h4>}
+                    {temp && <p className='card-text'>Temperature: {faren? `${temp_f} F`:`${temp} C`}</p>}
+                    {description && <p className='card-text'> {description} </p>}  
+                </div>
+        
             </div>
-
-            <div className='card-text'>
-                {country && country=='US'? '':<h2 className='card-header'>{country}</h2>}
-                {temp && <h4>Temperature: {faren? `${temp_f} F`:`${temp} C`}</h4>}
-                {description && <p> {description} </p>}
-               
-            </div>
-    
-        </div>
         </>
     )
 }

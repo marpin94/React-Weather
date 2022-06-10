@@ -1,25 +1,18 @@
 // import { Dropdown } from 'bootstrap'
-import React, { useEffect, useState } from 'react'
-
-
+import React, { useState } from 'react'
 import { WeatherCards } from './WeatherCards'
+
+import styles from '../styles/SearchBar.module.css'
 
 
 export const SearchBar = ({faren}) => {
 
     const [city, setCity] = useState('')
+
     const [searchResults, setSearchResults] = useState([])
     const [load, setLoad] = useState(false)
-    const [option, setOption] = useState('Current Weather')
-
-
-
-
-    const key = process.env.REACT_APP_API_KEY
-
-   
-
- 
+    
+    const key = '19dd6ea500b04a5dae7d1cff72e8e417'
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -38,9 +31,7 @@ export const SearchBar = ({faren}) => {
           console.log(error)
         })
 
-
-
-        if (apiData == undefined) {
+        if (apiData === undefined) {
             setCity('')
             return(
                 alert('City Not Found, Please Try Again')
@@ -56,7 +47,6 @@ export const SearchBar = ({faren}) => {
                 country: apiData.data[0].country_code               
             })
 
-
         }
             setLoad(true)
             setCity('')
@@ -67,14 +57,24 @@ export const SearchBar = ({faren}) => {
 
 
     return (
-    <div className='shadow-sm d-flex flex-column justify-content-center  m-5'>
-
-        <form className='form-group'>
-            <input className='form-control form-control-lg'type='text' placeholder='Enter City Name...' value={city} onChange={(e)=>setCity(e.target.value) } />
-            <button className='btn btn-primary btn-block'onClick = {handleSubmit}>Search</button> 
-
+    <div className={styles.container}>
+        <form autoComplete='off'>
+            <div className='form-group'>
+                <input 
+                    type='text' 
+                    className='form-control' 
+                    placeholder='Enter Search Terms...' 
+                    id='cityInput' 
+                    value={city} 
+                    onChange={(e)=>setCity(e.target.value) } 
+                    />
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                For best results enter City,State,Country e.g. Seattle, WA, USA
+                </small>
+            </div>
+            <button className={styles.searchBtn} onClick = {handleSubmit}>Search</button> 
         </form>
-        <div className=''>
+        <div>
             {load && <WeatherCards 
             temp={searchResults.temp} 
             city={searchResults.city} 
@@ -82,11 +82,7 @@ export const SearchBar = ({faren}) => {
             state = {searchResults.state} 
             country = {searchResults.country}
             faren={faren} />}
-            
-            <br/>
-
-
-            
+            <br/>  
         </div>
     </div>
     )
