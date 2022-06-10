@@ -1,11 +1,11 @@
-// import { Dropdown } from 'bootstrap'
 import React, { useState } from 'react'
 import { WeatherCards } from './WeatherCards'
-
 import styles from '../styles/SearchBar.module.css'
 
 
 export const SearchBar = ({faren}) => {
+
+    require('dotenv').config()
 
     const [city, setCity] = useState('')
 
@@ -13,6 +13,9 @@ export const SearchBar = ({faren}) => {
     const [load, setLoad] = useState(false)
     
     const key = process.env.REACT_APP_API_KEY
+
+    console.log(process.env.REACT_APP_API_KEY)
+
 
     async function handleSubmit(e){
         e.preventDefault()
