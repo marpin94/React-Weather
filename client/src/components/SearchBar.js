@@ -12,7 +12,7 @@ export const SearchBar = ({faren}) => {
     const [searchResults, setSearchResults] = useState([])
     const [load, setLoad] = useState(false)
     
-    const key = '19dd6ea500b04a5dae7d1cff72e8e417'
+    const key = process.env.REACT_APP_API_KEY
 
     async function handleSubmit(e){
         e.preventDefault()
